@@ -4,17 +4,19 @@ project(opensplice)
 
 # Hacky, but will work for now
 math(EXPR BITS "8*${CMAKE_SIZEOF_VOID_P}")
-if(APPLE)
-  set(platform "x86_64.darwin10_clang-release")
-elseif(WIN32)
-  message(FATAL_ERROR "Windows not yet supported")
-else()
-  if (BITS EQUAL 64)
-    set(platform "x86_64.linux-release")
-  else (BITS EQUAL 64)
-    set(platform "x86.linux-release")
-  endif()
-endif()
+
+#if(APPLE)
+#  set(platform "x86_64.darwin10_clang-release")
+#elseif(WIN32)
+#  message(FATAL_ERROR "Windows not yet supported")
+#else()
+#  if (BITS EQUAL 64)
+#    set(platform "x86_64.linux-release")
+#  else (BITS EQUAL 64)
+#    set(platform "x86.linux-release")
+#  endif()
+#endif()
+set(platform "armv7l.linux-release")
 
 # To build, run our bash wrapper script
 add_custom_target(build ALL
